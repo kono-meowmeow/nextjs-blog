@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -11,7 +12,12 @@ export default function Home() {
 
       <main>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          {/* aタグの代わりにLinkを使う */}
+          {/* Linkを使うと、ブラウザは全てのページをロードするわけではないから、aタグのときより速い */}
+          {/* developerツールでbackground: yellow;にして遷移するとわかりやすい */}
+          {/* pages配下にファイルを作り、Linkを使えばルーティングする必要はない */}
+          {/* ただし、Next.js外のページに遷移するにはaタグを使わないといけない */}
+          Read <Link href="/posts/first-post">this page!</Link>
         </h1>
 
         <p className={styles.description}>
