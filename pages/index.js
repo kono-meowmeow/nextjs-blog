@@ -5,6 +5,9 @@ import Link from 'next/link';
 export default function Home() {
   return (
     <div className={styles.container}>
+      {/* Headタグはページのタイトルやメタデータを設定するためのもの */}
+      {/* htmlの<head></head>タグの代わりに使う、React Componentが<Head></Head> */}
+      {/* next/headモジュールからimportできる(L1参照) */}
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
