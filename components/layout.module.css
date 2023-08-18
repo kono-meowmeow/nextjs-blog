@@ -1,0 +1,7 @@
+/* CSS Modulusを使うには、ファイルの末尾を .module.css にしないといけない */
+
+.container {
+  max-width: 36rem;
+  padding: 0 1rem;
+  margin: 3rem auto 6rem;
+}
