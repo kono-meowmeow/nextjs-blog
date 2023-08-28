@@ -15,6 +15,20 @@ export async function getStaticProps() {
   };
 }
 
+// 対して、getServerSidePropsは、リクエスト毎にサーバーサイドで実行される
+// いわゆるSSR(Server Side Rendering)と呼ばれるもの
+// このリポジトリで作るブログでは、リクエスト毎にデータを取得する必要がないので、getStaticPropsを使う
+// 以下はgetServerSidePropsの例のコード
+// export async function getServerSideProps(context) {
+//   return {
+//     props: {
+//       // props for your component
+//     },
+//   };
+// }
+// 引数のcontextには、リクエストに関する情報が入っている
+
+
 export default function Home({ allPostsData }) {
   return (
     <Layout home>
