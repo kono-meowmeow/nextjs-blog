@@ -1,8 +1,13 @@
 import Layout from '../../components/layout';
 import { getAllPostIds, getPostData } from '../../lib/posts';
+import Head from 'next/head';
+import Date from '../../components/date';
+// 下記のutilStylesという名前は、自分で定義したCSSモジュールのクラス名として使う
+import utilStyles from '../../styles/utils.module.css';
 
 export async function getStaticProps({ params }) {
-  const postData = getPostData(params.id);
+  // getPostDataでawaitとasyncを使っているので、getPostDataを呼び出す際にawaitを使う必要がある
+  const postData = await getPostData(params.id);
   // ブログ投稿のデータを取得して、propsとして返す
   return {
     props: {
@@ -39,11 +44,17 @@ export async function getStaticPaths() {
 export default function Post({ postData }) {
   return (
     <Layout>
-      {postData.title}
-      <br />
-      {postData.id}
-      <br />
-      {postData.date}
+      <Head>
+        {/* ページのタイトルをつける */}
+        <title>{postData.title}</title>
+      </Head>
+       <article>
+        <h1 className={utilStyles.headingXl}>{postData.title}</h1>
+        <div className={utilStyles.lightText}>
+          <Date dateString={postData.date} />
+        </div>
+        <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+      </article>
     </Layout>
   );
 }
