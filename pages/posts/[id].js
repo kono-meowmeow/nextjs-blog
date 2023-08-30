@@ -1,6 +1,7 @@
 import Layout from '../../components/layout';
 import { getAllPostIds, getPostData } from '../../lib/posts';
 import Head from 'next/head';
+import Date from '../../components/date';
 
 export async function getStaticProps({ params }) {
   // getPostDataでawaitとasyncを使っているので、getPostDataを呼び出す際にawaitを使う必要がある
@@ -49,7 +50,7 @@ export default function Post({ postData }) {
       <br />
       {postData.id}
       <br />
-      {postData.date}
+      <Date dateString={postData.date} />
       <br />
       <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
     </Layout>
