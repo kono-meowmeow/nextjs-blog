@@ -2,6 +2,8 @@ import Layout from '../../components/layout';
 import { getAllPostIds, getPostData } from '../../lib/posts';
 import Head from 'next/head';
 import Date from '../../components/date';
+// 下記のutilStylesという名前は、自分で定義したCSSモジュールのクラス名として使う
+import utilStyles from '../../styles/utils.module.css';
 
 export async function getStaticProps({ params }) {
   // getPostDataでawaitとasyncを使っているので、getPostDataを呼び出す際にawaitを使う必要がある
@@ -46,13 +48,13 @@ export default function Post({ postData }) {
         {/* ページのタイトルをつける */}
         <title>{postData.title}</title>
       </Head>
-      {postData.title}
-      <br />
-      {postData.id}
-      <br />
-      <Date dateString={postData.date} />
-      <br />
-      <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+       <article>
+        <h1 className={utilStyles.headingXl}>{postData.title}</h1>
+        <div className={utilStyles.lightText}>
+          <Date dateString={postData.date} />
+        </div>
+        <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+      </article>
     </Layout>
   );
 }
