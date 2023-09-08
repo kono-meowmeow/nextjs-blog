@@ -26,6 +26,10 @@ export default function FirstPost() {
         />
       </Head>
       <h1>First Post</h1>
+      <b>
+        このページはチュートリアルだと削除するように指示がありますけどね、<br />
+        何でもかんでもいうこと聞くと思うなよ
+      </b>
       <h2>
         <Link href="/">Back to home</Link>
       </h2>
